@@ -14,7 +14,27 @@ function rollDice() {
 
   document.querySelector(".player-one-dice").setAttribute("src", diceImg1);
   document.querySelector(".player-two-dice").setAttribute("src", diceImg2);
-  // move flag to correct side
+
+  // determine winner
+
+  // let flagImg = document.createElement("img").setAttribute("src", "")
+  // let flag = document.createElement("span").textContent = "🚩";
+  let headingElement = document.querySelector("div.container h1");
+  if (randomNum1 > randomNum2) {
+    headingElement.textContent = "🚩 Player 1 Wins!";
+    // document.querySelector("div.container").insertBefore(headingElement, flag);
+    console.log("Player 1 Wins!");
+  }
+  else if (randomNum1 < randomNum2) {
+    headingElement.textContent = "Player 2 Wins! 🚩";
+    // headingElement.after(flag);
+    console.log("Player 2 Wins!");
+  }
+  else {
+    headingElement.textContent = "Draw";
+    console.log("Draw");
+  }
+
   // update winner heading
 }
 
@@ -23,13 +43,14 @@ function startDiceGame() {
 
   // on refresh, roll the dice
   // window.addEventListener("beforeunload", (e) => {
+  document.addEventListener("click", (e) => {
   //   e.preventDefault();
   //   console.log("Prevented page from reloading");
-  for (let i = 0; i < 10; i++) {
+  // for (let i = 0; i < 10; i++) {
     rollDice();
-  }
+  // }
   //   return false;
-  // });
+  });
 }
 
 startDiceGame();
